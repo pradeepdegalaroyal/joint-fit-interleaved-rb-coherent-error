@@ -5,16 +5,16 @@
 [![CI](https://github.com/pradeepdegalaroyal/joint-fit-interleaved-rb-coherent-error/actions/workflows/ci.yml/badge.svg)](https://github.com/pradeepdegalaroyal/joint-fit-interleaved-rb-coherent-error/actions/workflows/ci.yml)
 
 **Question.** At an equal shot budget, does fitting the reference and interleaved randomized-benchmarking (RB) curves
-*jointly* (shared SPAM offsets, binomial weights) estimate a single-gate error better than the textbook
+*jointly* (shared state-preparation-and-measurement (SPAM) offsets, binomial weights) estimate a single-gate error better than the textbook
 two-independent-fits recipe, when part of the gate error is coherent?
 **Answer (simulation).** Yes: in all 36 cells of a shots × coherent-share grid the joint weighted fit has a lower
-RMSE, with a mean RMSE ratio of 0.536 (range 0.394–0.708). It does not remove the dependence on coherent share, and the
+root-mean-square error (RMSE), with a mean RMSE ratio of 0.536 (range 0.394–0.708). It does not remove the dependence on coherent share, and the
 RMSE barely falls with more shots because the number of random sequences, not the shot count, is the limiting factor.
 
 ## Abstract
 
 I simulate single-qubit interleaved RB with exact Pauli transfer matrices, a reference noise and an interleaved-gate noise
-that mix a coherent over-rotation with T1/T2 decay at fixed total infidelity. The standard IRB estimator (two independent
+that mix a coherent over-rotation with energy-relaxation time (T1)/dephasing time (T2) decay at fixed total infidelity. The standard interleaved randomized benchmarking (IRB) estimator (two independent
 exponential fits) is compared with a four-parameter joint fit with shared SPAM parameters and binomial shot weights, over
 six shot budgets, six coherent shares, a readout-error sweep and an ablation, using 5 seeds. The joint weighted fit lowers
 the estimator RMSE in 36 of 36 grid cells and in 176 of 180 seed-level comparisons. This is a simulation result with a
@@ -23,7 +23,7 @@ fixed, small number of sequences and no hardware data.
 ## Motivation and research gap
 
 Recent experiments report logical qubits that beat their physical qubits and error rates below the surface-code
-threshold (Acharya et al., 2023, DOI 10.1038/s41586-022-05434-1; Zobrist et al., 2025, DOI 10.1038/s41586-024-08449-y;
+threshold (Acharya et al., 2023, digital object identifier (DOI) 10.1038/s41586-022-05434-1; Zobrist et al., 2025, DOI 10.1038/s41586-024-08449-y;
 Sivak et al., 2023, DOI 10.1038/s41586-023-05782-6; Bluvstein et al., 2024, DOI 10.1038/s41586-023-06927-3).
 Pre-fault-tolerant utility experiments also rely on cheap, repeated noise characterisation (Kim et al., 2023,
 DOI 10.1038/s41586-023-06096-3), and new compilers consume per-gate fidelities as inputs
@@ -117,7 +117,8 @@ flowchart TD
   end
   A --> C
   B --> C
-  C -->|"survival curves"| D
+  C --> EL1["survival curves"]
+  EL1 --> D
   C --> E
   C --> F
   C --> G
@@ -128,7 +129,11 @@ flowchart TD
   H --> I
   classDef bw fill:#ffffff,stroke:#000000,color:#000000,stroke-width:2px;
   class A,B,C,D,E,F,G,H,I bw;
+  classDef lbl fill:#ffffff,stroke:#ffffff,color:#000000,font-style:italic;
+  class EL1 lbl;
 ```
+
+*Diagram abbreviations: PTMs = Pauli transfer matrices.*
 
 Every Clifford carries gate-independent reference noise (infidelity 3e-3, Z over-rotation plus T1/T2 decay with
 T2 = 1.5 T1); the interleaved gate carries extra noise of infidelity 4e-3 (X over-rotation plus decay). The coherent share
@@ -145,7 +150,7 @@ python experiments/run_all.py --quick   # smoke run, a few seconds (writes resul
 python experiments/run_all.py           # full study, 271.5 s (results/runtime.json)
 ```
 
-Hardware: Windows 11, 16 threads, CPU only, Python 3.11.9 (the full run took 271.5 s on a laptop shared with other work).
+Hardware: Windows 11, 16 threads, central processing unit (CPU) only, Python 3.11.9 (the full run took 271.5 s on a laptop shared with other work).
 
 ## Project structure
 
@@ -176,4 +181,4 @@ figures/         fig1-fig4 (200 dpi)
 }
 ```
 
-MIT license (`LICENSE`). See also `CITATION.cff`.
+Massachusetts Institute of Technology (MIT) license (`LICENSE`). See also `CITATION.cff`.
