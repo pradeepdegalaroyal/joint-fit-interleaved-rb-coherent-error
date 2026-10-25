@@ -1,0 +1,53 @@
+{
+ "ratio_mean_over_grid": 0.536,
+ "ratio_min": 0.394,
+ "ratio_max": 0.708,
+ "cells_ratio_below_1": 36,
+ "cells_total": 36,
+ "irb_rmse_s100_c0.4": 0.0011736971287107,
+ "ratio_s100_c0.4": 0.554,
+ "irb_rmse_s100_c0.6": 0.0019091410103156,
+ "ratio_s100_c0.6": 0.472,
+ "irb_rmse_s1000_c1.0": 0.0031942922922558,
+ "ratio_s1000_c1.0": 0.481,
+ "irb_rmse_s25_c1.0": 0.0040187649697,
+ "ratio_s25_c1.0": 0.426,
+ "irb_rmse_s25_c0": 0.001380412324167,
+ "irb_rmse_s1000_c0": 0.0004465731828719,
+ "joint_rmse_s25_c0": 0.0007500843494814,
+ "joint_rmse_s1000_c0": 0.0002470604532297,
+ "seed_cells_joint_better": 176,
+ "seed_cells_total": 180,
+ "readout0.0|IRB (independent, unweighted)|rmse": [
+  0.0009938317884544,
+  0.000330256240709
+ ],
+ "readout0.0|independent + shot weights|rmse": [
+  0.0008762077306575,
+  0.0001830718428292
+ ],
+ "readout0.0|joint fit + shot weights|rmse": [
+  0.0007648327012908,
+  0.0002151182823439
+ ],
+ "readout0.0|joint fit, unweighted|rmse": [
+  0.0008705548003594,
+  0.0002215225373337
+ ],
+ "readout0.1|IRB (independent, unweighted)|rmse": [
+  0.0014780910460614,
+  0.0002736732066955
+ ],
+ "readout0.1|independent + shot weights|rmse": [
+  0.0013981491787981,
+  0.0002864356373682
+ ],
+ "readout0.1|joint fit + shot weights|rmse": [
+  0.000971841094102,
+  0.0001091668404219
+ ],
+ "readout0.1|joint fit, unweighted|rmse": [
+  0.0009940241032912,
+  0.0001313709142128
+ ]
+}
