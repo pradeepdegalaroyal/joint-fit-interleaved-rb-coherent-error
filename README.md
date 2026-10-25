@@ -100,19 +100,19 @@ a fidelity-weighted compiler; test leakage and non-Markovian drift.
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#000000', 'lineColor': '#000000', 'secondaryColor': '#ffffff', 'tertiaryColor': '#ffffff', 'background': '#ffffff', 'noteBkgColor': '#ffffff', 'noteTextColor': '#000000', 'actorBkg': '#ffffff', 'actorBorder': '#000000', 'actorTextColor': '#000000', 'signalColor': '#000000', 'signalTextColor': '#000000', 'labelBoxBkgColor': '#ffffff', 'labelTextColor': '#000000', 'clusterBkg': '#ffffff', 'clusterBorder': '#000000'}}}%%
 flowchart TD
-  subgraph Sim["Simulator: clifford.py, noise.py, rb.py"]
-    A["24 Cliffords as PTMs"]
+  subgraph Sim[" "]
+    A["<b>Simulator</b><br/>clifford.py, noise.py,<br/>rb.py<br/><br/>24 Cliffords as PTMs"]
     B["Noise: coherent share + T1 T2 decay"]
     C["Random sequences, binomial shots,<br/>readout flip"]
   end
-  subgraph Est["Estimators: estimators.py"]
-    D["IRB baseline:<br/>two independent fits"]
+  subgraph Est[" "]
+    D["<b>Estimators</b><br/>estimators.py<br/><br/>IRB baseline:<br/>two independent fits"]
     E["Shot weights only"]
     F["Joint fit, shared A and B"]
     G["Joint fit + shot weights"]
   end
-  subgraph Eval["Evaluation: study.py, run_all.py, plots.py"]
-    H["RMSE and bias vs exact infidelity"]
+  subgraph Eval[" "]
+    H["<b>Evaluation</b><br/>study.py, run_all.py,<br/>plots.py<br/><br/>RMSE and bias vs exact infidelity"]
     I["Grid, ablation, readout sweep"]
   end
   A --> C
